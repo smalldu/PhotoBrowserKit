@@ -65,17 +65,19 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     var items: [ZYPhotoItem] = []
     for i in 0..<urls.count {
       let cell = collectionView.cellForItem(at: IndexPath(row: i, section: 0)) as? PhotoCell
+      // big url
       let bigUrl = urls[i].replacingOccurrences(of: "bmiddle", with: "large")
       let item = ZYPhotoItem()
+      // imageView
       item.sourceView = cell?.imageView
       item.imageURL = URL(string: bigUrl)
       item.thunbImage = cell?.imageView.image
       items.append(item)
-    } 
-    
+    }
     let browser = ZYPhotoBrowser(photoItems: items, selectedIndex: indexPath.row)
-    browser.delegate = self
     browser.showFromViewController(self)
+    
+    browser.delegate = self
   }
 }
 

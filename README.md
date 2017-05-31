@@ -5,6 +5,14 @@
 [![License](https://img.shields.io/cocoapods/l/PhotoBrowserKit.svg?style=flat)](http://cocoapods.org/pods/PhotoBrowserKit)
 [![Platform](https://img.shields.io/cocoapods/p/PhotoBrowserKit.svg?style=flat)](http://cocoapods.org/pods/PhotoBrowserKit)
 
+## Introduction
+This project is highly imitate from [KSPhotoBrowser](https://github.com/skx926/KSPhotoBrowser) - an Objective-C project
+， I just rewrite some feature use `Swift`
+
+It's smart and awesome ! 
+
+
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -18,6 +26,25 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod "PhotoBrowserKit"
+```
+
+## Usage
+
+```swift
+var items: [ZYPhotoItem] = []
+for i in 0..<urls.count {
+  let cell = collectionView.cellForItem(at: IndexPath(row: i, section: 0)) as? PhotoCell
+  // big url
+  let bigUrl = urls[i].replacingOccurrences(of: "bmiddle", with: "large")
+  let item = ZYPhotoItem()
+  // imageView
+  item.sourceView = cell?.imageView
+  item.imageURL = URL(string: bigUrl)
+  item.thunbImage = cell?.imageView.image
+  items.append(item)
+}
+let browser = ZYPhotoBrowser(photoItems: items, selectedIndex: indexPath.row)
+browser.showFromViewController(self)
 ```
 
 ## Author
