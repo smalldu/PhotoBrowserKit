@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36D151DC57CB88B7144C7620 /* Pods_PhotoBrowserKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF1054B6AA09FF0C8E8B16C5 /* Pods_PhotoBrowserKit.framework */; };
 		C4A685F21EDBE6C6005B276D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A685F11EDBE6C6005B276D /* AppDelegate.swift */; };
 		C4A685F41EDBE6C6005B276D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A685F31EDBE6C6005B276D /* ViewController.swift */; };
 		C4A685F71EDBE6C6005B276D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A685F51EDBE6C6005B276D /* Main.storyboard */; };
@@ -14,6 +15,11 @@
 		C4A685FC1EDBE6C6005B276D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A685FA1EDBE6C6005B276D /* LaunchScreen.storyboard */; };
 		C4A686071EDBE6C6005B276D /* PhotoBrowserKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686061EDBE6C6005B276D /* PhotoBrowserKitTests.swift */; };
 		C4A686121EDBE6C6005B276D /* PhotoBrowserKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686111EDBE6C6005B276D /* PhotoBrowserKitUITests.swift */; };
+		C4A686211EDBE864005B276D /* ZYPhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686201EDBE864005B276D /* ZYPhotoItem.swift */; };
+		C4A686231EDBE94C005B276D /* ZYPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686221EDBE94C005B276D /* ZYPhotoView.swift */; };
+		C4A686251EDBE9A1005B276D /* ZYPhotoBroswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686241EDBE9A1005B276D /* ZYPhotoBroswer.swift */; };
+		C4A686271EDBEBBA005B276D /* ZYConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686261EDBEBBA005B276D /* ZYConstant.swift */; };
+		C4A686291EDC75A9005B276D /* ZYImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A686281EDC75A9005B276D /* ZYImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF1054B6AA09FF0C8E8B16C5 /* Pods_PhotoBrowserKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoBrowserKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A685EE1EDBE6C6005B276D /* PhotoBrowserKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBrowserKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A685F11EDBE6C6005B276D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4A685F31EDBE6C6005B276D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,13 @@
 		C4A6860D1EDBE6C6005B276D /* PhotoBrowserKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoBrowserKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A686111EDBE6C6005B276D /* PhotoBrowserKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowserKitUITests.swift; sourceTree = "<group>"; };
 		C4A686131EDBE6C6005B276D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4A686201EDBE864005B276D /* ZYPhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYPhotoItem.swift; sourceTree = "<group>"; };
+		C4A686221EDBE94C005B276D /* ZYPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYPhotoView.swift; sourceTree = "<group>"; };
+		C4A686241EDBE9A1005B276D /* ZYPhotoBroswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYPhotoBroswer.swift; sourceTree = "<group>"; };
+		C4A686261EDBEBBA005B276D /* ZYConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYConstant.swift; sourceTree = "<group>"; };
+		C4A686281EDC75A9005B276D /* ZYImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYImageManager.swift; sourceTree = "<group>"; };
+		CABE1CDC574913C864C6FD68 /* Pods-PhotoBrowserKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBrowserKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBrowserKit/Pods-PhotoBrowserKit.debug.xcconfig"; sourceTree = "<group>"; };
+		D42C016FB99CE31A6FD63092 /* Pods-PhotoBrowserKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBrowserKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBrowserKit/Pods-PhotoBrowserKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D151DC57CB88B7144C7620 /* Pods_PhotoBrowserKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D7F72C4CD7BDB97DD0228BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CABE1CDC574913C864C6FD68 /* Pods-PhotoBrowserKit.debug.xcconfig */,
+				D42C016FB99CE31A6FD63092 /* Pods-PhotoBrowserKit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5AEB2460B65CE6B73CA6F739 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF1054B6AA09FF0C8E8B16C5 /* Pods_PhotoBrowserKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C4A685E51EDBE6C6005B276D = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +113,8 @@
 				C4A686051EDBE6C6005B276D /* PhotoBrowserKitTests */,
 				C4A686101EDBE6C6005B276D /* PhotoBrowserKitUITests */,
 				C4A685EF1EDBE6C6005B276D /* Products */,
+				3D7F72C4CD7BDB97DD0228BB /* Pods */,
+				5AEB2460B65CE6B73CA6F739 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +131,7 @@
 		C4A685F01EDBE6C6005B276D /* PhotoBrowserKit */ = {
 			isa = PBXGroup;
 			children = (
+				C4A6861F1EDBE830005B276D /* PhotoBrowserKit */,
 				C4A685F11EDBE6C6005B276D /* AppDelegate.swift */,
 				C4A685F31EDBE6C6005B276D /* ViewController.swift */,
 				C4A685F51EDBE6C6005B276D /* Main.storyboard */,
@@ -125,6 +160,18 @@
 			path = PhotoBrowserKitUITests;
 			sourceTree = "<group>";
 		};
+		C4A6861F1EDBE830005B276D /* PhotoBrowserKit */ = {
+			isa = PBXGroup;
+			children = (
+				C4A686201EDBE864005B276D /* ZYPhotoItem.swift */,
+				C4A686221EDBE94C005B276D /* ZYPhotoView.swift */,
+				C4A686241EDBE9A1005B276D /* ZYPhotoBroswer.swift */,
+				C4A686261EDBEBBA005B276D /* ZYConstant.swift */,
+				C4A686281EDC75A9005B276D /* ZYImageManager.swift */,
+			);
+			name = PhotoBrowserKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A686161EDBE6C6005B276D /* Build configuration list for PBXNativeTarget "PhotoBrowserKit" */;
 			buildPhases = (
+				0D036D8473CC4D59683CBEEA /* [CP] Check Pods Manifest.lock */,
 				C4A685EA1EDBE6C6005B276D /* Sources */,
 				C4A685EB1EDBE6C6005B276D /* Frameworks */,
 				C4A685EC1EDBE6C6005B276D /* Resources */,
+				5FACEFA29B6C85621C6FC6C1 /* [CP] Embed Pods Frameworks */,
+				72F426EB088917C1D108CE5E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,13 +307,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D036D8473CC4D59683CBEEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5FACEFA29B6C85621C6FC6C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoBrowserKit/Pods-PhotoBrowserKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72F426EB088917C1D108CE5E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoBrowserKit/Pods-PhotoBrowserKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C4A685EA1EDBE6C6005B276D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A686291EDC75A9005B276D /* ZYImageManager.swift in Sources */,
+				C4A686271EDBEBBA005B276D /* ZYConstant.swift in Sources */,
+				C4A686231EDBE94C005B276D /* ZYPhotoView.swift in Sources */,
 				C4A685F41EDBE6C6005B276D /* ViewController.swift in Sources */,
 				C4A685F21EDBE6C6005B276D /* AppDelegate.swift in Sources */,
+				C4A686211EDBE864005B276D /* ZYPhotoItem.swift in Sources */,
+				C4A686251EDBE9A1005B276D /* ZYPhotoBroswer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +518,7 @@
 		};
 		C4A686171EDBE6C6005B276D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CABE1CDC574913C864C6FD68 /* Pods-PhotoBrowserKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8TC2A5YZC5;
@@ -428,6 +532,7 @@
 		};
 		C4A686181EDBE6C6005B276D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D42C016FB99CE31A6FD63092 /* Pods-PhotoBrowserKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8TC2A5YZC5;
@@ -516,6 +621,7 @@
 				C4A686181EDBE6C6005B276D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4A686191EDBE6C6005B276D /* Build configuration list for PBXNativeTarget "PhotoBrowserKitTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +630,7 @@
 				C4A6861B1EDBE6C6005B276D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4A6861C1EDBE6C6005B276D /* Build configuration list for PBXNativeTarget "PhotoBrowserKitUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +639,7 @@
 				C4A6861E1EDBE6C6005B276D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
