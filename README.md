@@ -11,7 +11,7 @@ This project is highly imitate from [KSPhotoBrowser](https://github.com/skx926/K
 
 It's smart and awesome ! 
 
-
+![demo](https://github.com/smalldu/PhotoBrowserKit/blob/master/picture/demo.gif)
 
 ## Example
 
