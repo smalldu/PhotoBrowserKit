@@ -9,9 +9,11 @@
 import UIKit
 
 class ZYPhotoItem{
-  
   var thunbImage: UIImage? // 缩略图
   var image: UIImage?
+  var imageURL: URL?
+  var finished: Bool = false
+  var sourceView: UIView?
   
   
 }

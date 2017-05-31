@@ -18,10 +18,9 @@ extension Array {
   }
 }
 struct ZYConstant {
-  
   static let photoViewPadding: CGFloat = 10
   static let photoViewMaxScale: Int = 3
-  
+  static let springAnimationDuration: TimeInterval = 0.3
   
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20B55BF51EDE5F3300782CB9 /* ZYProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B55BF41EDE5F3300782CB9 /* ZYProgressLayer.swift */; };
+		20F296931EDE7AB200FF9AB2 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F296921EDE7AB200FF9AB2 /* PhotoCell.swift */; };
 		36D151DC57CB88B7144C7620 /* Pods_PhotoBrowserKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF1054B6AA09FF0C8E8B16C5 /* Pods_PhotoBrowserKit.framework */; };
 		C4A685F21EDBE6C6005B276D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A685F11EDBE6C6005B276D /* AppDelegate.swift */; };
 		C4A685F41EDBE6C6005B276D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A685F31EDBE6C6005B276D /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20B55BF41EDE5F3300782CB9 /* ZYProgressLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYProgressLayer.swift; sourceTree = "<group>"; };
+		20F296921EDE7AB200FF9AB2 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		AF1054B6AA09FF0C8E8B16C5 /* Pods_PhotoBrowserKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoBrowserKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A685EE1EDBE6C6005B276D /* PhotoBrowserKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBrowserKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A685F11EDBE6C6005B276D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				C4A685F81EDBE6C6005B276D /* Assets.xcassets */,
 				C4A685FA1EDBE6C6005B276D /* LaunchScreen.storyboard */,
 				C4A685FD1EDBE6C6005B276D /* Info.plist */,
+				20F296921EDE7AB200FF9AB2 /* PhotoCell.swift */,
 			);
 			path = PhotoBrowserKit;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				C4A686241EDBE9A1005B276D /* ZYPhotoBroswer.swift */,
 				C4A686261EDBEBBA005B276D /* ZYConstant.swift */,
 				C4A686281EDC75A9005B276D /* ZYImageManager.swift */,
+				20B55BF41EDE5F3300782CB9 /* ZYProgressLayer.swift */,
 			);
 			name = PhotoBrowserKit;
 			sourceTree = "<group>";
@@ -243,7 +249,7 @@
 				TargetAttributes = {
 					C4A685ED1EDBE6C6005B276D = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 8TC2A5YZC5;
+						DevelopmentTeam = KY748RT68A;
 						ProvisioningStyle = Automatic;
 					};
 					C4A686011EDBE6C6005B276D = {
@@ -361,10 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A686291EDC75A9005B276D /* ZYImageManager.swift in Sources */,
+				20F296931EDE7AB200FF9AB2 /* PhotoCell.swift in Sources */,
 				C4A686271EDBEBBA005B276D /* ZYConstant.swift in Sources */,
 				C4A686231EDBE94C005B276D /* ZYPhotoView.swift in Sources */,
 				C4A685F41EDBE6C6005B276D /* ViewController.swift in Sources */,
 				C4A685F21EDBE6C6005B276D /* AppDelegate.swift in Sources */,
+				20B55BF51EDE5F3300782CB9 /* ZYProgressLayer.swift in Sources */,
 				C4A686211EDBE864005B276D /* ZYPhotoItem.swift in Sources */,
 				C4A686251EDBE9A1005B276D /* ZYPhotoBroswer.swift in Sources */,
 			);
@@ -521,8 +529,9 @@
 			baseConfigurationReference = CABE1CDC574913C864C6FD68 /* Pods-PhotoBrowserKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8TC2A5YZC5;
+				DEVELOPMENT_TEAM = KY748RT68A;
 				INFOPLIST_FILE = PhotoBrowserKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zz.PhotoBrowserKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,8 +544,9 @@
 			baseConfigurationReference = D42C016FB99CE31A6FD63092 /* Pods-PhotoBrowserKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8TC2A5YZC5;
+				DEVELOPMENT_TEAM = KY748RT68A;
 				INFOPLIST_FILE = PhotoBrowserKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zz.PhotoBrowserKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
