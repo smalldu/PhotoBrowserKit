@@ -1,4 +1,0 @@
-# PhotoBrowserKit
-
-
-study from `KSPhotoBrowser`
