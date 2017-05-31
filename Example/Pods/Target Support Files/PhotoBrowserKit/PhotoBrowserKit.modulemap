@@ -1,0 +1,6 @@
+framework module PhotoBrowserKit {
+  umbrella header "PhotoBrowserKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
