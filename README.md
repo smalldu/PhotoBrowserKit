@@ -19,7 +19,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-It's dependency on `Kingfisher`
+This library requires iOS 8.0+ and Xcode 8.0+
 
 ## Installation
 
