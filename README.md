@@ -19,6 +19,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+It's dependency on `Kingfisher`
+
 ## Installation
 
 PhotoBrowserKit is available through [CocoaPods](http://cocoapods.org). To install
