@@ -12,6 +12,12 @@ public protocol ZYPhotoBrowserDelegate: NSObjectProtocol {
   func zy_photoBrowser(_ browser:ZYPhotoBrowser,didSelect item:ZYPhotoItem, at index:Int)
 }
 
+
+public enum ZYPageStyle {
+  case dot
+  case num
+}
+
 public class ZYPhotoBrowser: UIViewController {
   
   fileprivate lazy var scrollView: UIScrollView = {
@@ -31,6 +37,12 @@ public class ZYPhotoBrowser: UIViewController {
     return label
   }()
   
+  fileprivate lazy var pageControl: UIPageControl = {
+    let pager = UIPageControl()
+    
+    return pager
+  }()
+  
   fileprivate lazy var _imageManager = ZYImageManager()
   
   /// 当前页
@@ -41,6 +53,7 @@ public class ZYPhotoBrowser: UIViewController {
   fileprivate var _presented = false
   fileprivate var _startLocation = CGPoint.zero
   
+  public var style: ZYPageStyle = .num
   public weak var delegate: ZYPhotoBrowserDelegate?
   
   public init(photoItems: [ZYPhotoItem] , selectedIndex index:Int) {
@@ -49,7 +62,6 @@ public class ZYPhotoBrowser: UIViewController {
     super.init(nibName: nil, bundle: nil)
     self.modalPresentationStyle = .custom
     self.modalTransitionStyle = .coverVertical
-    
   }
   
   required public init?(coder aDecoder: NSCoder) {
@@ -82,17 +94,23 @@ extension ZYPhotoBrowser{
     scrollView.frame = rect
     view.addSubview(scrollView)
     
-    // add page label
-    pageLabel.frame = CGRect(x: 0, y: rect.height - 40 , width: view.bounds.width , height: 20)
-    configLabelWithPage(currentPage)
-    view.addSubview(pageLabel)
+    if style == .num {
+      // add page label
+      pageLabel.frame = CGRect(x: 0, y: rect.height - 40 , width: view.bounds.width , height: 20)
+      configLabelWithPage(currentPage)
+      view.addSubview(pageLabel)
+    }else{
+      pageControl.frame = CGRect(x: 0, y: rect.height - 40 , width: view.bounds.width , height: 20)
+      pageControl.numberOfPages = photoItems.count
+      configLabelWithPage(currentPage)
+      view.addSubview(pageControl)
+    }
     
     // setup other
     let contentSize = CGSize(width: rect.width * CGFloat(photoItems.count), height: rect.height)
     scrollView.contentSize = contentSize
     
     setupGestureRecognize()
-    
     let contentOffset = CGPoint(x: scrollView.frame.width * CGFloat( currentPage ) , y: 0)
     scrollView.setContentOffset(contentOffset, animated: false)
     if contentOffset.x == 0{
@@ -142,7 +160,11 @@ extension ZYPhotoBrowser{
 // MARK: - some calculate
 extension ZYPhotoBrowser {
   func configLabelWithPage(_ page: Int){
-    pageLabel.text = "\(page+1) / \(photoItems.count)"
+    if style == .num {
+      pageLabel.text = "\(page+1) / \(photoItems.count)"
+    }else{
+      pageControl.currentPage = page
+    }
   }
   /// 更新缓存列表 和 可见列表
   func updateReuseableItemViews(){

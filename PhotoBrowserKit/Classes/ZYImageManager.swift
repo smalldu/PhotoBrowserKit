@@ -19,7 +19,6 @@ class ZYImageManager: NSObject {
     })
   }
   
-  
   func imageFromMemoryForURL(_ url:URL) -> Image?{
     return KingfisherManager.shared.cache.retrieveImageInMemoryCache(forKey: url.absoluteString)
   }

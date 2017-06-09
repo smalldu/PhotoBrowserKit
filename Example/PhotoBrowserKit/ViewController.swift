@@ -75,6 +75,7 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
       items.append(item)
     }
     let browser = ZYPhotoBrowser(photoItems: items, selectedIndex: indexPath.row)
+    browser.style = .dot
     browser.showFromViewController(self)
     
     browser.delegate = self
