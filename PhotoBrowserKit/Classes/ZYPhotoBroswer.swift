@@ -39,8 +39,17 @@ public class ZYPhotoBrowser: UIViewController {
   
   fileprivate lazy var pageControl: UIPageControl = {
     let pager = UIPageControl()
-    
     return pager
+  }()
+  
+  fileprivate lazy var saveBtn: UIButton = {
+    let btn = UIButton()
+    btn.setTitle("保存", for: .normal )
+    btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    btn.layer.borderColor = UIColor.white.cgColor
+    btn.layer.borderWidth = 0.5
+    btn.addTarget(self, action: #selector(saveToPhoto), for: .touchUpInside )
+    return btn
   }()
   
   fileprivate lazy var _imageManager = ZYImageManager()
@@ -116,6 +125,10 @@ extension ZYPhotoBrowser{
     if contentOffset.x == 0{
       self.scrollViewDidScroll(scrollView)
     }
+    
+    self.view.addSubview(saveBtn)
+    saveBtn.frame = CGRect(x: ZYConstant.sw - 40  , y: 30 , width: 35 , height: 20 )
+    saveBtn.alpha = 0.8
   }
   
   func willAppear(){
@@ -154,6 +167,25 @@ extension ZYPhotoBrowser{
     vc.present(self, animated: false, completion: nil)
   }
   
+  func saveToPhoto(){
+    let photoView = self.photoViewForPage(currentPage)
+    if let image = photoView?.imageView.image {
+      
+      // 保存到相册
+      UIImageWriteToSavedPhotosAlbum(image, self, #selector(ZYPhotoBrowser.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+  }
+  
+  // 保存相册的回调 有可能失败
+  func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+    if let _ = error {
+      print("保存失败")
+      
+    } else {
+      print("保存成功")
+      ZYTip.shared.showWith(title: "保存相册成功")
+    }
+  }
 }
 
 
