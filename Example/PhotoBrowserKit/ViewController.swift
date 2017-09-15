@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var collectionView:UICollectionView!
   fileprivate var urls:[String] = []
-  
+  fileprivate var url2:[String] = []
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Photo Browser"
@@ -35,6 +35,10 @@ class ViewController: UIViewController {
     "http://ww2.sinaimg.cn/bmiddle/a15bd3a5jw1ey1oyiyut7j20u00mi0vb.jpg",
     "http://ww2.sinaimg.cn/bmiddle/d8937438gw1fb69b0hf5fj20hu13fjxj.jpg"]
     
+    
+    url2 = ["http://ww2.sinaimg.cn/bmiddle/a15bd3a5jw1eupveeuzajj20hs0hs75d.jpg",
+            "http://ww2.sinaimg.cn/bmiddle/a15bd3a5jw1ey1oyiyut7j20u00mi0vb.jpg",
+    "http://ww2.sinaimg.cn/bmiddle/d8937438gw1fb69b0hf5fj20hu13fjxj.jpg"]
     
   }
 
@@ -74,9 +78,26 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource {
       item.thunbImage = cell?.imageView.image
       items.append(item)
     }
+    
+
+    var item2s: [ZYPhotoItem] = []
+    for i in 0..<url2.count {
+      let cell = collectionView.cellForItem(at: IndexPath(row: i, section: 0)) as? PhotoCell
+      // big url
+      let bigUrl = url2[i].replacingOccurrences(of: "bmiddle", with: "large")
+      let item = ZYPhotoItem()
+      // imageView
+      item.sourceView = cell?.imageView
+      item.imageURL = URL(string: bigUrl)
+      item.thunbImage = cell?.imageView.image
+      item2s.append(item)
+    }
+    
     let browser = ZYPhotoBrowser(photoItems: items, selectedIndex: indexPath.row)
-    browser.style = .dot
+    browser.shoulPageable = true
+    browser.style = .num
     browser.showFromViewController(self)
+    browser.photoItemGroup = [items,item2s]
     
     browser.delegate = self
   }

@@ -42,26 +42,44 @@ public class ZYPhotoBrowser: UIViewController {
     return pager
   }()
   
-  fileprivate lazy var saveBtn: UIButton = {
-    let btn = UIButton()
-    btn.setTitle("保存", for: .normal )
-    btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-    btn.layer.borderColor = UIColor.white.cgColor
-    btn.layer.borderWidth = 0.5
-    btn.addTarget(self, action: #selector(saveToPhoto), for: .touchUpInside )
-    return btn
-  }()
-  
   fileprivate lazy var _imageManager = ZYImageManager()
   
   /// 当前页
   fileprivate var currentPage: Int
   fileprivate var photoItems: [ZYPhotoItem]
+  
+  public var photoItemGroup: [[ZYPhotoItem]] = [[]]
+  
   fileprivate var visibleItemViews: [ZYPhotoView] = []
   fileprivate var reusableItemViews: [ZYPhotoView] = []
   fileprivate var _presented = false
   fileprivate var _startLocation = CGPoint.zero
   
+  let closeBtn: UIButton = {
+    let btn = UIButton()
+    btn.setTitle("✕", for: .normal )
+    btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+    btn.setTitleColor(UIColor.white , for: .normal)
+    btn.frame = CGRect(x: 15 , y: 20 , width: 50, height: 50)
+    return btn
+  }()
+  
+  let menuView: ZYMenuView = {
+    let view = ZYMenuView(menuItems: ["房间","公共区域"])
+    view.backgroundColor = UIColor.clear
+    view.frame = CGRect(x: 0 , y: 70 , width: UIScreen.main.bounds.width , height: 40)
+    return view
+  }()
+  
+  let topView: UIView = {
+    let view = UIView()
+    view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+    view.frame = CGRect(x: 0 , y: 0 , width: UIScreen.main.bounds.width , height: 110)
+    return view
+  }()
+  
+  fileprivate var isTopHidden = false
+  public var shoulPageable: Bool = false
   public var style: ZYPageStyle = .num
   public weak var delegate: ZYPhotoBrowserDelegate?
   
@@ -126,9 +144,38 @@ extension ZYPhotoBrowser{
       self.scrollViewDidScroll(scrollView)
     }
     
-    self.view.addSubview(saveBtn)
-    saveBtn.frame = CGRect(x: ZYConstant.sw - 40  , y: 30 , width: 35 , height: 20 )
-    saveBtn.alpha = 0.8
+    // pageable
+    if shoulPageable {
+      closeBtn.addTarget(self, action: #selector(didClickClose), for: .touchUpInside )
+      view.addSubview(topView)
+      topView.addSubview(closeBtn)
+      topView.addSubview(menuView)
+      menuView.delegate = self
+    }
+  }
+  
+  
+  func reloadItems(){
+    scrollView.contentOffset.x = 0
+    currentPage = 0
+    if style == .dot {
+      configLabelWithPage(currentPage)
+    }else{
+      pageControl.numberOfPages = photoItems.count
+      configLabelWithPage(currentPage)
+    }
+    var rect = view.bounds
+    rect.origin.x -= ZYConstant.photoViewPadding
+    rect.size.width += 2*ZYConstant.photoViewPadding
+    // setup other
+    let contentSize = CGSize(width: rect.width * CGFloat(photoItems.count), height: rect.height)
+    scrollView.contentSize = contentSize
+    
+    let contentOffset = CGPoint(x: scrollView.frame.width * CGFloat( currentPage ) , y: 0)
+    scrollView.setContentOffset(contentOffset, animated: false)
+    if contentOffset.x == 0{
+      self.scrollViewDidScroll(scrollView)
+    }
   }
   
   func willAppear(){
@@ -166,26 +213,33 @@ extension ZYPhotoBrowser{
   public func showFromViewController(_ vc:UIViewController){
     vc.present(self, animated: false, completion: nil)
   }
+
+  func didClickClose(){
+    self.showDismissalAnimation()
+  }
+}
+
+extension ZYPhotoBrowser: ZYMenuViewDelegate {
   
-  func saveToPhoto(){
-    let photoView = self.photoViewForPage(currentPage)
-    if let image = photoView?.imageView.image {
-      
-      // 保存到相册
-      UIImageWriteToSavedPhotosAlbum(image, self, #selector(ZYPhotoBrowser.image(_:didFinishSavingWithError:contextInfo:)), nil)
+  func zy_menuViewDidClick(at index: Int) {
+    let items = photoItemGroup[index]
+    self.photoItems = items
+    
+    for item in reusableItemViews {
+      item.removeFromSuperview()
     }
+    reusableItemViews.removeAll()
+    for item in visibleItemViews{
+      item.removeFromSuperview()
+    }
+    visibleItemViews.removeAll()
+    UIView.performWithoutAnimation { 
+      self.reloadItems()
+      self.willAppear()
+    }
+    
   }
   
-  // 保存相册的回调 有可能失败
-  func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
-    if let _ = error {
-      print("保存失败")
-      
-    } else {
-      print("保存成功")
-      ZYTip.shared.showWith(title: "保存相册成功")
-    }
-  }
 }
 
 
@@ -328,7 +382,27 @@ extension ZYPhotoBrowser {
   }
   
   func didSingleTap(_ gesture:UITapGestureRecognizer){
-    self.showDismissalAnimation()
+    if shoulPageable {
+      if isTopHidden {
+        UIView.animate(withDuration: 0.4 , animations: {
+          self.topView.transform = CGAffineTransform.identity
+          self.topView.alpha = 1
+        }, completion: { _ in
+          self.isTopHidden = false
+        })
+      }else{
+        topView.transform = CGAffineTransform.identity
+        UIView.animate(withDuration: 0.4 , animations: { 
+          self.topView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -70)
+          self.topView.alpha = 0
+        }, completion: { _ in
+          self.isTopHidden = true
+        })
+      }
+      
+    }else{
+      self.showDismissalAnimation()
+    }
   }
   
   func didDoubleTap(_ gesture:UITapGestureRecognizer){
@@ -387,6 +461,7 @@ extension ZYPhotoBrowser {
                                         .translatedBy(x: point.x/s, y: point.y/s)
                                         .scaledBy(x: s, y: s)
       self.view.backgroundColor = UIColor(white: 0, alpha: percent)
+      self.topView.alpha = percent
     case .ended,.cancelled:
       if fabs(point.y) > 100 || fabs(velocity.y) > 500 {
         self.showDismissalAnimation()
@@ -443,6 +518,7 @@ extension ZYPhotoBrowser {
     // 可见范围计算rect
     photoView.progressLayer.isHidden = true
     item.sourceView?.alpha = 0
+    self.topView.alpha = 0
     var sourceRect = CGRect.zero
     sourceRect = item.sourceView?.superview?.convert(item.sourceView!.frame , to: photoView) ?? CGRect.zero
     UIView.animate(withDuration: ZYConstant.springAnimationDuration , delay: 0, animations: {
