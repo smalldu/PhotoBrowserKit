@@ -24,6 +24,7 @@ public class ZYPhotoBrowser: UIViewController {
     let scrollView = UIScrollView()
     scrollView.isPagingEnabled = true
     scrollView.showsHorizontalScrollIndicator = false
+    scrollView.alwaysBounceHorizontal = true
     scrollView.delegate = self
     return scrollView
   }()
@@ -47,6 +48,7 @@ public class ZYPhotoBrowser: UIViewController {
   /// 当前页
   fileprivate var currentPage: Int
   fileprivate var photoItems: [ZYPhotoItem]
+  fileprivate var currentGroupIndex: Int = 0
   
   public var photoItemGroup: [[ZYPhotoItem]] = [[]]
   
@@ -222,6 +224,7 @@ extension ZYPhotoBrowser{
 extension ZYPhotoBrowser: ZYMenuViewDelegate {
   
   func zy_menuViewDidClick(at index: Int) {
+    self.currentGroupIndex = index
     let items = photoItemGroup[index]
     self.photoItems = items
     
@@ -237,7 +240,6 @@ extension ZYPhotoBrowser: ZYMenuViewDelegate {
       self.reloadItems()
       self.willAppear()
     }
-    
   }
   
 }
@@ -351,6 +353,29 @@ extension ZYPhotoBrowser: UIScrollViewDelegate {
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
     updateReuseableItemViews()
     configItemViews()
+    let groupCount = self.photoItemGroup.count
+    if groupCount > 1 {
+      let contentWidth = scrollView.contentSize.width
+      let offSetX = scrollView.contentOffset.x
+//      print("-------\(offSetX) ， \(contentWidth)")
+      // 切换下一个数据源
+      if offSetX + scrollView.frame.width > contentWidth + 65 {
+        scrollView.setContentOffset(CGPoint.zero , animated: false) // 还原
+        if self.currentGroupIndex < groupCount - 1 {
+          self.currentGroupIndex += 1
+          self.zy_menuViewDidClick(at: self.currentGroupIndex)
+          self.menuView.scrollTo(self.currentGroupIndex)
+        }
+      }else if offSetX < -65 {
+        if self.currentGroupIndex > 0 {
+          scrollView.setContentOffset(CGPoint.zero , animated: false)
+          self.currentGroupIndex -= 1
+          self.zy_menuViewDidClick(at: self.currentGroupIndex)
+          self.menuView.scrollTo(self.currentGroupIndex)
+        }
+      }
+    }
+    
   }
   
 }
