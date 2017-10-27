@@ -222,6 +222,15 @@ extension ZYPhotoBrowser{
 }
 
 extension ZYPhotoBrowser: ZYMenuViewDelegate {
+  public func scrollToIndex(_ index: Int) {
+    self.currentGroupIndex = index
+    self.menuView.scrollTo(index)
+  }
+  
+  public func scrollToIndex(_ index: Int) {
+    self.currentGroupIndex = index
+    self.menuView.scrollTo(index)
+  }
   
   func zy_menuViewDidClick(at index: Int) {
     self.currentGroupIndex = index
@@ -360,8 +369,8 @@ extension ZYPhotoBrowser: UIScrollViewDelegate {
 //      print("-------\(offSetX) ， \(contentWidth)")
       // 切换下一个数据源
       if offSetX + scrollView.frame.width > contentWidth + 65 {
-        scrollView.setContentOffset(CGPoint.zero , animated: false) // 还原
         if self.currentGroupIndex < groupCount - 1 {
+          scrollView.setContentOffset(CGPoint.zero , animated: false) // 还原
           self.currentGroupIndex += 1
           self.zy_menuViewDidClick(at: self.currentGroupIndex)
           self.menuView.scrollTo(self.currentGroupIndex)
