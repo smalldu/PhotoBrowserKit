@@ -227,11 +227,6 @@ extension ZYPhotoBrowser: ZYMenuViewDelegate {
     self.menuView.scrollTo(index)
   }
   
-  public func scrollToIndex(_ index: Int) {
-    self.currentGroupIndex = index
-    self.menuView.scrollTo(index)
-  }
-  
   func zy_menuViewDidClick(at index: Int) {
     self.currentGroupIndex = index
     let items = photoItemGroup[index]
