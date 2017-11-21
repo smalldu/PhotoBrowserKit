@@ -40,7 +40,7 @@ class ZYProgressLayer: CAShapeLayer {
     NotificationCenter.default.removeObserver(self)
   }
   
-  func applicationDidBecomeActive(_ notification:Notification) {
+  @objc func applicationDidBecomeActive(_ notification:Notification) {
     
   }
   

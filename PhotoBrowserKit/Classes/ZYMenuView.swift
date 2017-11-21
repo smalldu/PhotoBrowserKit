@@ -138,7 +138,7 @@ class ZYMenuViewLabel: UILabel {
     addGestureRecognizer(tap)
   }
   
-  func click(){
+  @objc func click(){
     print("clicked")
     delegate?.zy_menuViewLabelDidClick(self)
   }

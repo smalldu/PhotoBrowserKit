@@ -1,10 +1,10 @@
 PODS:
-  - Kingfisher (3.1.4)
-  - PhotoBrowserKit (0.1.2):
-    - Kingfisher (~> 3.1.0)
+  - Kingfisher (4.3.1)
+  - PhotoBrowserKit (0.1.6):
+    - Kingfisher
 
 DEPENDENCIES:
-  - Kingfisher (~> 3.1.0)
+  - Kingfisher
   - PhotoBrowserKit (from `../`)
 
 EXTERNAL SOURCES:
@@ -12,9 +12,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Kingfisher: 6c67e3e57f2d81a9cfdfa25052cd86f33ceac9bb
-  PhotoBrowserKit: 0ee7550c79fee2b8959b28479b23b7c1eecdc290
+  Kingfisher: 75541c4b62f02e1fde6f9772303de3d9ebe8f5b3
+  PhotoBrowserKit: 821e15e584aeda48c35c160c7b6caa39fc418cc0
 
-PODFILE CHECKSUM: 05b23dc2ad3db462cb7bfa584d84dc3de6ffaf37
+PODFILE CHECKSUM: d6e49fe14d194b1211ccfdaea241ab8907785222
 
 COCOAPODS: 1.3.0.beta.2

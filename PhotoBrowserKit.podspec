@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PhotoBrowserKit'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'A short description of PhotoBrowserKit.'
   s.homepage         = 'https://github.com/smalldu/PhotoBrowserKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
@@ -23,5 +23,5 @@ Pod::Spec.new do |s|
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.dependency 'Kingfisher', '~> 3.1.0'
+  s.dependency 'Kingfisher'
 end

@@ -1,6 +1,6 @@
 {
   "name": "PhotoBrowserKit",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "summary": "A short description of PhotoBrowserKit.",
   "homepage": "https://github.com/smalldu/PhotoBrowserKit",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/smalldu/PhotoBrowserKit.git",
-    "tag": "0.1.2"
+    "tag": "0.1.6"
   },
   "platforms": {
     "ios": "8.0"
@@ -20,7 +20,7 @@
   "source_files": "PhotoBrowserKit/Classes/**/*",
   "dependencies": {
     "Kingfisher": [
-      "~> 3.1.0"
+
     ]
   }
 }

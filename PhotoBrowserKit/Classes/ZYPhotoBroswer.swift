@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 public protocol ZYPhotoBrowserDelegate: NSObjectProtocol {
   func zy_photoBrowser(_ browser:ZYPhotoBrowser,didSelect item:ZYPhotoItem, at index:Int)
@@ -216,7 +217,7 @@ extension ZYPhotoBrowser{
     vc.present(self, animated: false, completion: nil)
   }
 
-  func didClickClose(){
+  @objc func didClickClose(){
     self.showDismissalAnimation()
   }
 }
@@ -410,7 +411,7 @@ extension ZYPhotoBrowser {
     self.view.addGestureRecognizer(pan)
   }
   
-  func didSingleTap(_ gesture:UITapGestureRecognizer){
+  @objc func didSingleTap(_ gesture:UITapGestureRecognizer){
     if shoulPageable {
       if isTopHidden {
         UIView.animate(withDuration: 0.4 , animations: {
@@ -434,7 +435,7 @@ extension ZYPhotoBrowser {
     }
   }
   
-  func didDoubleTap(_ gesture:UITapGestureRecognizer){
+  @objc func didDoubleTap(_ gesture:UITapGestureRecognizer){
     guard let photoView = self.photoViewForPage(currentPage) else { return }
     let item = photoItems[currentPage]
     if !item.finished {
@@ -453,15 +454,47 @@ extension ZYPhotoBrowser {
     }
   }
   
-  func didLongPress(_ gesture:UILongPressGestureRecognizer){
-    
+  // 相册权限
+  func authorize(_ status: PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus())->Bool{
+    switch status {
+    case .authorized:
+      return true
+    case .notDetermined:
+      // 请求授权
+      PHPhotoLibrary.requestAuthorization({ (status) -> Void in
+        DispatchQueue.main.async {
+          _ = self.authorize(status)
+        }
+      })
+    default:
+      break
+    }
+    return false
+  }
+  @objc func didLongPress(_ gesture:UILongPressGestureRecognizer){
+    // 存储照片
+    guard let photoView = self.photoViewForPage(currentPage) else { return }
+    if let iamge = photoView.imageView.image {
+      if authorize(){
+        UIImageWriteToSavedPhotosAlbum(iamge, self,#selector(ZYPhotoBrowser.image(_:didFinishSavingWithError:contextInfo:)), nil)
+      }
+    }
+  }
+  // 保存相册的回调 有可能失败
+  @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+    if let error = error {
+      // 保存失败
+      print(error.localizedDescription)
+    } else {
+      print("保存成功")
+    }
   }
   
   
   /// 滑动
   ///
   /// - Parameter gesture: gesture
-  func didPan(_ gesture:UIPanGestureRecognizer){
+  @objc func didPan(_ gesture:UIPanGestureRecognizer){
     guard let photoView = self.photoViewForPage(currentPage) else { return }
     if photoView.zoomScale > 1.1 {
       return
