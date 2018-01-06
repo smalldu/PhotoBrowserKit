@@ -472,13 +472,24 @@ extension ZYPhotoBrowser {
     return false
   }
   @objc func didLongPress(_ gesture:UILongPressGestureRecognizer){
-    // 存储照片
-    guard let photoView = self.photoViewForPage(currentPage) else { return }
-    if let iamge = photoView.imageView.image {
-      if authorize(){
-        UIImageWriteToSavedPhotosAlbum(iamge, self,#selector(ZYPhotoBrowser.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    // 弹窗提示
+    let controller = UIAlertController(title: "提示",message: "保存图片到相册？" ,preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title:"取消", style: .cancel, handler:nil)
+    let action = UIAlertAction(title: "确认", style: .default, handler: { [weak self] _ in
+      guard let `self` = self else{ return }
+      // 存储照片
+      guard let photoView = self.photoViewForPage(self.currentPage) else { return }
+      if let iamge = photoView.imageView.image {
+        if self.authorize(){
+          UIImageWriteToSavedPhotosAlbum(iamge, self,#selector(ZYPhotoBrowser.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
       }
-    }
+    })
+    controller.addAction(cancelAction)
+    controller.addAction(action)
+    self.present(controller, animated: true, completion: nil)
+    
+    
   }
   // 保存相册的回调 有可能失败
   @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
