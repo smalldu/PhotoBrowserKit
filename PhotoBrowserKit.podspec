@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PhotoBrowserKit'
-  s.version          = '0.1.7'
+  s.version          = '0.1.8'
   s.summary          = 'A short description of PhotoBrowserKit.'
   s.homepage         = 'https://github.com/smalldu/PhotoBrowserKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
